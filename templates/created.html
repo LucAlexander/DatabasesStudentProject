@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<style>
+	h1{
+		text-align: center;
+		font-family:arial;
+		background-color: #4CAF50;
+		color: white;
+		padding: 15px 32px;
+		font-size: 25px;
+	}
+	table{
+		border-style:solid;
+		border-color:green;
+		border-collapse: collapse;
+	}
+</style>
+<html>
+	<h1>Added Student</h1>
+	<body>
+		<table>
+			{% for key, value in data.items() %}
+				<tr>
+					<th>{{key}}</th>
+					<td>{{value}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<style>
+	.button{
+		background-color: #4CAF50; /* Green */
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		outline: solid 1px black;
+	}
+	label{
+		padding-bottom: 15px;
+		display:flex;
+		justify-content:center;
+		font-family: arial;
+		font-size:25px;
+	}
+	.l{
+		width:200px;
+		height:50px;
+	}
+	h1{
+		text-align: center;
+		font-family:arial;
+		background-color: #4CAF50;
+		color: white;
+		padding: 15px 32px;
+		font-size: 25px;
+	}
+</style>
+
+<html>
+	<h1>Create Student</h1>
+	<body>
+		<form method="post">
+			<label>First Name: <input class="l" name = "first"></label><br/>
+			<label>Last Name: <input class="l"name = "last"></label><br/>
+			<label>Major: <input class="l"name = "major"></label><br/>
+			<label>GPA: <input class="l"name = "gpa"></label><br/>
+			<label>ID: <input class="l"name = "id"></label><br/>
+			<input type = "submit" class = "button"><br/>
+		</form>
+	</body>
+</html>
