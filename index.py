@@ -86,7 +86,9 @@ def setup_db():
 	connection = sqlite3.connect("students.db")
 	crsr = connection.cursor()
 	crsr.execute("DROP TABLE IF EXISTS STUDENTS")
-	table = """
+	crsr.execute("DROP TABLE IF EXISTS SCHOOL")
+	crsr.execute("DROP TABLE IF EXISTS CLASS")
+	tableA = """
 		CREATE TABLE STUDENTS(
 			first_name CHAR(32) NOT NULL,
 			last_name CHAR(32) NOT NULL,
@@ -95,7 +97,23 @@ def setup_db():
 			id CHAR(7) NOT NULL PRIMARY KEY
 		);
 	"""
-	crsr.execute(table)
+	tableB = """
+		CREATE TABLE SCHOOL(
+			name CHAR(32) NOT NULL,
+			number CHAR(7) NOT NULL PRIMARY KEY
+		);
+	"""
+	tableC = """
+		CREATE TABLE CLASS(
+			capacity INTEGER,
+			name CHAR(32) NOT NULL,
+			number CHAR(7) NOT NULL PRIMARY KEY
+		);
+	"""
+	crsr.execute(tableA)
+	crsr.execute(tableB)
+	crsr.execute(tableC)
+	connection.commit()
 	crsr.close()
 	connection.close()
 
@@ -112,6 +130,8 @@ def main_data():
 	crsr.execute('INSERT INTO STUDENTS VALUES ("Maylo", "Domingo", "Architecture", 4, "1234567");')
 	crsr.execute('INSERT INTO STUDENTS VALUES ("Pavlos", "Rosglou", "CS", 3, "7654321");')
 	crsr.execute('INSERT INTO STUDENTS VALUES ("Ali", "Hachem", "Real Estate", 3, "0987654");')
+	crsr.execute('INSERT INTO SCHOOL VALUES ("Suffolk University", "1234567");')
+	crsr.execute('INSERT INTO CLASS VALUES (20, "Databases", "355");')
 	connection.commit()
 	crsr.close()
 	connection.close()
