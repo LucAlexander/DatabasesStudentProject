@@ -97,31 +97,27 @@ def setup_db():
 	"""
 	crsr.execute(table)
 	crsr.close()
+	connection.close()
 
 def main_data():
 	connection = sqlite3.connect("students.db")
 	crsr = connection.cursor()
-	crsr.execute(f'
-		INSERT INTO STUDENTS VALUES ("{d["First Name"]}", "{d["Last Name"]}", "{d["Major"]}", {int(d["GPA"])}, "{d["ID"]}")
-		INSERT INTO STUDENTS VALUES ("Luc", "Alexander", "CS", 4, "6758958")
-		INSERT INTO STUDENTS VALUES ("Sam", "Situ", "CS", 3, "6758958")
-		INSERT INTO STUDENTS VALUES ("", "", "", , "")
-		INSERT INTO STUDENTS VALUES ("", "", "", , "")
-		INSERT INTO STUDENTS VALUES ("", "", "", , "")
-		INSERT INTO STUDENTS VALUES ("", "", "", , "")
-		INSERT INTO STUDENTS VALUES ("", "", "", , "")
-		INSERT INTO STUDENTS VALUES ("", "", "", , "")
-		INSERT INTO STUDENTS VALUES ("", "", "", , "")
-		INSERT INTO STUDENTS VALUES ("", "", "", , "")
-		INSERT INTO STUDENTS VALUES ("", "", "", , "")
-		INSERT INTO STUDENTS VALUES ("", "", "", , "")
-		INSERT INTO STUDENTS VALUES ("", "", "", , "")
-		INSERT INTO STUDENTS VALUES ("", "", "", , "")
-		INSERT INTO STUDENTS VALUES ("", "", "", , "")
-	')
+	crsr.execute('INSERT INTO STUDENTS VALUES ("Luc", "Alexander", "CS", 4, "6758958");')
+	crsr.execute('INSERT INTO STUDENTS VALUES ("Sam", "Situ", "CS", 3, "7589586");')
+	crsr.execute('INSERT INTO STUDENTS VALUES ("Ian", "Demusis", "CS", 4, "5895867");')
+	crsr.execute('INSERT INTO STUDENTS VALUES ("John", "Doe", "Film", 2, "8958675");')
+	crsr.execute('INSERT INTO STUDENTS VALUES ("Jane", "Dow", "Communications", 2, "9586758");')
+	crsr.execute('INSERT INTO STUDENTS VALUES ("Lera", "Somova", "CS", 4, "5867589");')
+	crsr.execute('INSERT INTO STUDENTS VALUES ("Roberto", "Laguna", "Music", 3, "8675895");')
+	crsr.execute('INSERT INTO STUDENTS VALUES ("Maylo", "Domingo", "Architecture", 4, "1234567");')
+	crsr.execute('INSERT INTO STUDENTS VALUES ("Pavlos", "Rosglou", "CS", 3, "7654321");')
+	crsr.execute('INSERT INTO STUDENTS VALUES ("Ali", "Hachem", "Real Estate", 3, "0987654");')
+	connection.commit()
+	crsr.close()
+	connection.close()
 
 def main():
-	#setup_db() # first time runs only
+	setup_db() # first time runs only
 	main_data()
 	app.run(debug=True)
 
